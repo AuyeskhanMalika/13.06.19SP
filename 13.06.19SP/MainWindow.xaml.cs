@@ -63,7 +63,7 @@ namespace _13._06._19SP
         private async void SendEmailAsync()
         {
             string emailText = new TextRange(richTextBoxMessage.Document.ContentStart, richTextBoxMessage.Document.ContentEnd).Text;
-            var result = await _appService.SendEmailAsync("theasanali7@gmail.com", "davisdex", toTextBox.Text, themeText.Text, emailText);
+            var result = await _appService.SendEmailAsync("malika2711@mail.ru", "auyesm", toTextBox.Text, themeText.Text, emailText);
 
             MessageBox.Show(result);
         }
@@ -72,37 +72,37 @@ namespace _13._06._19SP
         {
             if (toTextBox.Text == string.Empty || themeText.Text == string.Empty)
             {
-                MessageBox.Show("Заполните все поля для опрации отправки сообщения!");
+                MessageBox.Show("Fill in all fields to send a message!");
                 return;
             }
 
             if (TypeComboBox.SelectedValue == null)
             {
-                MessageBox.Show("Выберите период отправки сообщений!");
+                MessageBox.Show("Select the period of sending messages!");
                 return;
             }
 
             if (!TimeSpan.TryParse(startTime.Text, out TimeSpan timeStart))
             {
-                MessageBox.Show("Время старта заполнено не корректно!");
+                MessageBox.Show("Start time is not filled correctly!");
                 return;
             }
 
             if (!TimeSpan.TryParse(startTime.Text, out TimeSpan timeEnd))
             {
-                MessageBox.Show("Время конца заполнено не корректно!");
+                MessageBox.Show("End time is not correct!");
                 return;
             }
 
             if (startDate.SelectedDate.Value.AddHours(timeStart.Hours).AddMinutes(timeStart.Minutes) < DateTime.Now)
             {
-                MessageBox.Show("Дата старта операции отправки сообщения не должна быть меньше нынешней даты!");
+                MessageBox.Show("Date of starting the operation of sending a message should not be less than the current date!");
                 return;
             }
 
             if (endDate.SelectedDate.Value.AddHours(timeEnd.Hours).AddMinutes(timeEnd.Minutes) < startDate.SelectedDate.Value.AddHours(timeStart.Hours).AddMinutes(timeStart.Minutes))
             {
-                MessageBox.Show("Дата конца операции отправки сообщения не должна быть меньше даты старта!");
+                MessageBox.Show("The date of the end of the message sending operation should not be less than the start date!");
                 return;
             }
 
